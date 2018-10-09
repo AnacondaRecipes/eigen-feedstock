@@ -17,6 +17,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - cmake
+    - make  # [ppc64le]
 
 test:
   requires:
