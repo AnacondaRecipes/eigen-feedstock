@@ -6,8 +6,8 @@ package:
 
 source:
   fn: eigen-{{ version }}.tar.gz
-  url: http://bitbucket.org/eigen/eigen/get/{{ version }}.tar.gz
-  sha1: 743c1dc00c6680229d8cc87d44debe5a71d15c01
+  url: https://gitlab.com/libeigen/eigen/-/archive/{{ version }}/eigen-{{ version }}.tar.gz
+  sha256: d56fbad95abf993f8af608484729e3d87ef611dd85b3380a8bad1d5cbc373a57
 
 build:
   number: 0
@@ -15,9 +15,8 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-  host:
     - cmake
-    - make  # [ppc64le]
+    - make  # [ppc64le or aarch64]
 
 test:
   requires:
