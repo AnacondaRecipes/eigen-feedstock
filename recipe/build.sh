@@ -1,9 +1,16 @@
 #!/bin/sh
-
+set -e
 mkdir build
 cd build
 
-cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE=Release ..
-make install
-make basicstuff -j${CPU_COUNT}
+cmake -LAH -GNinja ..                            \
+    -DCMAKE_INSTALL_PREFIX=${PREFIX}             \
+    -DCMAKE_BUILD_TYPE=Release
+
+cmake --build .
+
+cmake --install .
+
+# Build and run some basic tests
+cmake  --build .  --target basicstuff
 ctest -R basicstuff*
