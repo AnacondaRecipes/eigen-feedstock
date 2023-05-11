@@ -1,4 +1,4 @@
-{% set version = "3.3.7" %}
+{% set version = "3.4.0" %}
 
 package:
   name: eigen
@@ -7,10 +7,10 @@ package:
 source:
   fn: eigen-{{ version }}.tar.gz
   url: https://gitlab.com/libeigen/eigen/-/archive/{{ version }}/eigen-{{ version }}.tar.gz
-  sha1: 3e8ab94ff389ae4b3103f5dda77c826d85b9c1d5
+  sha1: d222db69a9e87d9006608e029d1039039f360b52
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -29,6 +29,10 @@ test:
 
 about:
   home: http://eigen.tuxfamily.org/
+  dev_url: https://gitlab.com/libeigen/eigen
+  doc_url: https://eigen.tuxfamily.org/dox/
   license: MPL2
   license_family: Other
   summary: C++ template library for linear algebra
+  description: |
+    Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
