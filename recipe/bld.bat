@@ -1,19 +1,25 @@
 md build
 cd build
 
-cmake .. -LAH -GNinja                                 ^
- -DCMAKE_BUILD_TYPE=Release                           ^
- -DINCLUDE_INSTALL_DIR=%LIBRARY_PREFIX%/include       ^
- -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%
+set CMAKE_CONFIG="Release"
+
+cmake -LAH -G"Ninja"              ^
+  -DCMAKE_BUILD_TYPE=%CMAKE_CONFIG%         ^
+  -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX%      ^
+  -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%   ^
+  -DEIGEN_BUILD_PKGCONFIG=ON ^
+  ..
 if errorlevel 1 exit 1
 
-cmake --build .
+cmake --build . --config %CMAKE_CONFIG%
 if errorlevel 1 exit 1
 cmake --install .
 if errorlevel 1 exit 1
 
 rem Just make the basic tests as all the tests take too long to run.
-cmake --build .  --target basicstuff
+FOR /L %%A IN (1,1,8) DO (
+  cmake --build . --config %CMAKE_CONFIG% --target basicstuff_%%A
+)
 if errorlevel 1 exit 1
 ctest -R basicstuff*
 if errorlevel 1 exit 1

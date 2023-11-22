@@ -3,9 +3,11 @@ set -e
 mkdir build
 cd build
 
-cmake -LAH -GNinja ..                            \
-    -DCMAKE_INSTALL_PREFIX=${PREFIX}             \
-    -DCMAKE_BUILD_TYPE=Release
+cmake -G Ninja ${CMAKE_ARGS} \
+  -DCMAKE_PREFIX_PATH=${PREFIX} \
+  -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+  -DCMAKE_BUILD_TYPE=Release \
+  ..
 
 cmake --build .
 
