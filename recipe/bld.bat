@@ -5,7 +5,6 @@ cmake -B build -G"Ninja"              ^
   -DEIGEN_BUILD_PKGCONFIG=ON ^
   -DEIGEN_BUILD_BLAS=OFF ^
   -DEIGEN_BUILD_LAPACK=OFF ^
-  ..
 if errorlevel 1 exit 1
 
 cmake --build build --config Release --target install

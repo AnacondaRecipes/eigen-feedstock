@@ -38,7 +38,7 @@ about:
   license: MPL-2.0
   license_family: Other
   license_file: COPYING.MPL2
-  summary: "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms."
-  description: "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms."
+  summary: Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
+  description: Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
   dev_url: https://gitlab.com/libeigen/eigen
   doc_url: https://eigen.tuxfamily.org/dox

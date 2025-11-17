@@ -8,7 +8,6 @@ cmake -S . -B build -G Ninja ${CMAKE_ARGS} \
   -DEIGEN_BUILD_PKGCONFIG=ON \
   -DEIGEN_BUILD_BLAS=OFF \
   -DEIGEN_BUILD_LAPACK=OFF \
-  ..
 
 cmake --build build --config Release --target install
 
