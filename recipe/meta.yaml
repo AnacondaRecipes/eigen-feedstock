@@ -24,9 +24,9 @@ test:
     - test -f $PREFIX/share/pkgconfig/eigen3.pc  # [unix]
     - test -f $PREFIX/share/eigen3/cmake/Eigen3Config.cmake  # [unix]
     - test -f $PREFIX/include/eigen3/Eigen/Core  # [unix]
-    - if not exist %PREFIX%\\Library\\share\\eigen3\\cmake\\Eigen3Config.cmake exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\share\\pkgconfig\\eigen3.pc exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\include\\eigen3\\core exit 1  # [win]
+    - if not exist %LIBRARY_PREFIX%\\share\\eigen3\\cmake\\Eigen3Config.cmake exit 1  # [win]
+    - if not exist %LIBRARY_PREFIX%\\share\\pkgconfig\\eigen3.pc exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\eigen3\\Eigen\\Core exit 1  # [win]
 
 about:
   home: https://eigen.tuxfamily.org
