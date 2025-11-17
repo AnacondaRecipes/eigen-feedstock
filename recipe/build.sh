@@ -1,18 +1,17 @@
 #!/bin/sh
-set -e
-mkdir build
-cd build
+set -ex
 
-cmake -G Ninja ${CMAKE_ARGS} \
+cmake -S . -B build -G Ninja ${CMAKE_ARGS} \
+  -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_PREFIX_PATH=${PREFIX} \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-  -DCMAKE_BUILD_TYPE=Release \
+  -DEIGEN_BUILD_PKGCONFIG=ON \
+  -DEIGEN_BUILD_BLAS=OFF \
+  -DEIGEN_BUILD_LAPACK=OFF \
   ..
 
-cmake --build .
-
-cmake --install .
+cmake --build build --config Release --target install
 
 # Build and run some basic tests
-cmake  --build .  --target basicstuff
-ctest -R basicstuff*
+cmake  --build build  --target basicstuff
+ctest --test-dir build -R basicstuff*
