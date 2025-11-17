@@ -11,18 +11,17 @@ source:
 
 build:
   number: 0
-  ignore_run_exports:
-    - libcxx
 
 requirements:
   build:
-    # - {{ stdlib('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - cmake >3.10
     - ninja-base
 
 test:
   requires:
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
   files:
     - test.cc
