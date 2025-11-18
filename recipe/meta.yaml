@@ -14,12 +14,14 @@ build:
 
 requirements:
   build:
-    - {{ stdlib('c') }}
+    # - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - cmake >3.10
     - ninja-base
 
 test:
+  downstreams:
+    - opencv
   commands:
     - test -f $PREFIX/share/pkgconfig/eigen3.pc  # [unix]
     - test -f $PREFIX/share/eigen3/cmake/Eigen3Config.cmake  # [unix]
