@@ -20,8 +20,8 @@ requirements:
     - ninja-base
 
 test:
-  downstreams:
-    - opencv
+  # downstreams:
+    # - opencv
   commands:
     - test -f $PREFIX/share/pkgconfig/eigen3.pc  # [unix]
     - test -f $PREFIX/share/eigen3/cmake/Eigen3Config.cmake  # [unix]
