@@ -1,5 +1,5 @@
 # Tests started failing after update cbc in aggregate compiler version to 14.3.0
-c_compiler_version:  # [unix]
-  - 11.2.0  # [unix]
-cxx_compiler_version:   # [unix]
-  - 11.2.0  # [unix]
+c_compiler_version:  # [linux]
+  - 11.2.0  # [linux]
+cxx_compiler_version:   # [linux]
+  - 11.2.0  # [linux]
