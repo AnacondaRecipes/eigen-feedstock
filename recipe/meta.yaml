@@ -1,38 +1,41 @@
-{% set version = "3.4.0" %}
+{% set version = "5.0.1" %}
+{% set name = "eigen" %}
 
 package:
-  name: eigen
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: eigen-{{ version }}.tar.gz
-  url: https://gitlab.com/libeigen/eigen/-/archive/{{ version }}/eigen-{{ version }}.tar.gz
-  sha256: 8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72
+  url: https://gitlab.com/lib{{ name }}/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: e9c326dc8c05cd1e044c71f30f1b2e34a6161a3b6ecf445d56b53ff1669e3dec
 
 build:
   number: 0
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
-    - cmake
-    - ninja
+    - cmake >3.10
+    - ninja-base
 
 test:
-  requires:
-    - {{ compiler('cxx') }}
-  files:
-    - test.cc
-  commands:  # [win]
-    - if not exist %PREFIX%\\Library\\include\\eigen3 exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\share\\pkgconfig\\eigen3.pc exit 1  # [win]
+  # downstreams:
+    # - opencv
+  commands:
+    - test -f $PREFIX/share/pkgconfig/eigen3.pc  # [unix]
+    - test -f $PREFIX/share/eigen3/cmake/Eigen3Config.cmake  # [unix]
+    - test -f $PREFIX/include/eigen3/Eigen/Core  # [unix]
+    - if not exist %LIBRARY_PREFIX%\\share\\eigen3\\cmake\\Eigen3Config.cmake exit 1  # [win]
+    - if not exist %LIBRARY_PREFIX%\\share\\pkgconfig\\eigen3.pc exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\eigen3\\Eigen\\Core exit 1  # [win]
 
 about:
-  home: https://eigen.tuxfamily.org/
+  home: https://eigen.tuxfamily.org
   license: MPL-2.0
   license_family: Other
   license_file: COPYING.MPL2
   summary: "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms."
   description: "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms."
   dev_url: https://gitlab.com/libeigen/eigen
-  doc_url: https://eigen.tuxfamily.org/dox/
+  doc_url: https://libeigen.gitlab.io
