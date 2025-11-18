@@ -13,4 +13,4 @@ cmake --build build --config Release --target install
 
 # Build and run some basic tests
 cmake  --build build  --target basicstuff
-ctest --test-dir build -R basicstuff*
+ctest --test-dir build -R basicstuff* -V
