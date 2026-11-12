@@ -16,7 +16,7 @@ requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
-    - cmake >3.10
+    - cmake >3.10,<4
     - ninja-base
 
 test:
@@ -31,7 +31,7 @@ test:
     - if not exist %LIBRARY_INC%\\eigen3\\Eigen\\Core exit 1  # [win]
 
 about:
-  home: https://eigen.tuxfamily.org
+  home: https://libeigen.gitlab.io
   license: MPL-2.0
   license_family: Other
   license_file: COPYING.MPL2
