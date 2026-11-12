@@ -1,4 +1,4 @@
-{% set version = "5.0.1" %}
+{% set version = "3.3.7" %}
 {% set name = "eigen" %}
 
 package:
@@ -10,7 +10,7 @@ source:
   sha256: e9c326dc8c05cd1e044c71f30f1b2e34a6161a3b6ecf445d56b53ff1669e3dec
 
 build:
-  number: 0
+  number: 2
 
 requirements:
   build:
