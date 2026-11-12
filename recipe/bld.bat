@@ -11,9 +11,8 @@ cmake --build build --config Release --target install
 if errorlevel 1 exit 1
 
 rem Just make the basic tests as all the tests take too long to run.
-FOR /L %%A IN (1,1,8) DO (
-  cmake --build build --config Release --target basicstuff_%%A
-)
+cmake --build build --config Release --target basicstuff
+
 if errorlevel 1 exit 1
 ctest --test-dir build -R basicstuff* -V
 if errorlevel 1 exit 1
